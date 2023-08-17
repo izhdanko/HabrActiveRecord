@@ -1,0 +1,30 @@
+<h4>Post details:</h4>
+<br />
+<p>
+	<%= @post.content %>
+	<br />
+	<br />
+	Added at: <%= @post.created_at %>.
+	Author name: <%= @post.author %>.
+</p>
+<br />
+<h4>Comments:</h4>
+
+<br />
+<% @comments.each do |comment| %>
+	<p>
+		<%= comment.comment_content %>
+		<br />
+		<br />
+		<span style="font-size: 75%; color: #999">Added at: <%= comment.created_at %></span>
+	</p>
+	<hr />
+<% end %>
+
+<p>
+<form action="/details/<%= @post.id %>" method="POST" role="form">
+	  	<textarea name="comment[comment_content]" class="form-control" rows="6" placeholder="Type comment text here"></textarea>
+	  	<br />
+	  	<button type="submit" class="btn btn-primary">Add comment</button>
+	</form>
+</p> 
